@@ -5,7 +5,8 @@ defmodule DemoAbsintheNullBugWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/api", DemoAbsintheNullBugWeb do
+  scope "/" do
     pipe_through :api
+    forward "/graphql", Absinthe.Plug, schema: DemoAbsintheNullBug.Schema
   end
 end
